@@ -1,0 +1,56 @@
+@mixin ellipsis($row: 1) {
+  /* 多行文本溢出 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* 设置盒子行数 */
+  -webkit-line-clamp: $row;
+  /* 设置对齐模式 */
+  -webkit-box-orient: vertical;
+  /* 允许长单词换行到下一行 */
+  word-wrap: break-word;
+  /* 允许在单词内换行 */
+  word-break: break-all;
+}
+
+@mixin flex-box {
+  display: flex;
+  // "justify-content: space-between;" 显示行之间有空格的 flex 项目
+  justify-content: space-between;
+  align-items: center;
+}
+
+/** 
+ * justify-content:垂直对齐
+ * align-items:水平对齐
+ */
+@mixin flex-box-set($justify-content: center, $align-items: center) {
+  @include flex-box();
+
+  // 居中对齐
+  @if ($justify-content==center) {
+    justify-content: center;
+  }
+
+  // 左对齐
+  @if ($justify-content==start) {
+    justify-content: flex-start;
+  }
+
+  // 右对齐
+  @if ($justify-content==end) {
+    justify-content: flex-end;
+  }
+
+  @if ($align-items==center) {
+    align-items: center;
+  }
+
+  @if ($align-items==start) {
+    align-items: flex-start;
+  }
+
+  @if ($align-items==end) {
+    align-items: flex-end;
+  }
+}
